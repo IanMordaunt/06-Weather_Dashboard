@@ -150,19 +150,5 @@ $(document).ready(function(){
     // ******  Get "history" form local storage  *****
     // ******  Add listitem class for history[i]  *****
     // ******  Append to "#historyList"  ******
-    var history = JSON.parse(localStorage.getItem("history"));  
     
-    if (history) {
-        var lastSearchedCity = history[0];  //takes last searched city from localstorage
-        searchCurrentWeather(lastSearchedCity); //loads last searched city's weather
-
-        for(var i = 0 ; i < history.length; i++){
-            //Gets Search history from local storage and populates in HTML
-            var listitem = $("<li>").addClass("list-group-item previousCity").text(history[i]);  
-            $("#historylist").append(listitem);            
-        }
-    } else {
-        $("#city-card").hide();
-        $("#5DayForecast").hide();
-    }
 });
