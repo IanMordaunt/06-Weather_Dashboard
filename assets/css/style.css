@@ -3,22 +3,32 @@ body {
     background-color: beige;
 }
 
-.col-12 h2  {
-    
-   
+.col-3 p {
+    padding-left: 25px;
+    color:khaki;
+    font-size: 2em;
 }
 
+.card-title text-info  {
+    color: aquamarine;   
+   
+}
 
 .col-3 {
     background-image: url('../Weather\ Search\ Col\ 3.jpeg');
   background-size: 100% 100%;
 }
 
+.headerContent {
+    text-align: center;
+    color:khaki;
+}
 
-.navbar-brand{
+.headerText{
     font-family: 'Lobster', cursive;
     font-size: 50px !important;
     padding: 0px;
+   
 }
 
 .yellowBtn{

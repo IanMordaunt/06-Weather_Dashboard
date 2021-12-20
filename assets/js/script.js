@@ -13,7 +13,6 @@ function searchCity(event){
    
     searchCurrentWeather(cityInput);
     
-    populateSearchHistory(cityInput);
     
     $("#searchcity").val("");
 }
@@ -52,7 +51,7 @@ function searchCurrentWeather(city){
           
         $("#city-card").show();
         
-        $("#temperature").text("Temperature : "+tempF.toFixed(2)+" °F/ "+tempC.toFixed(2)+"°C"); //SHIFT OPTION 8 for degree symbol
+        $("#temperature").text("Temperature : "+tempF.toFixed(2)+" °F/ "+tempC.toFixed(2)+"°C"); 
         $("#humidity").text("Humidity : "+response.main.humidity+" %");
         $("#windspeed").text("Wind Speed : "+response.wind.speed+" MPH");
         // Image icon for Current Weather (city-card)
@@ -77,6 +76,7 @@ function getUVIndex(uvQueryURL){
         url: uvQueryURL,
         method: "GET"
     })
+    // .then
 }
     // **********  Need Uvi Responce   ************
     
