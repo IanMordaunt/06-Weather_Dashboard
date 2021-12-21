@@ -28,6 +28,6 @@ Finally making sure the UI is styled to please the eye help complement the funti
 
 
 
-![Alt text]("https://github.com/IanMordaunt/06-Weather_Dashboard/blob/main/assets/%20Weather%20Dashboard%20-%20P1.png")
+![alt text](https://github.com/IanMordaunt/06-Weather_Dashboard/blob/main/assets/%20Weather%20Dashboard%20-%20P1.png)
 
-![Alt text]("https://github.com/IanMordaunt/06-Weather_Dashboard/blob/main/assets/Weather%20Dashboard%20-%20P2.png")
+![alt text](https://github.com/IanMordaunt/06-Weather_Dashboard/blob/main/assets/Weather%20Dashboard%20-%20P2.png)
