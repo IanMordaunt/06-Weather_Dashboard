@@ -14,9 +14,17 @@ body {
    
 }
 
+.card-body {
+    background-color: rgb(78, 124, 146);
+   
+}
+
+
 .font {
     font-weight: 800;
 }
+
+
 
 .col-3 {
     background-image: url('../Weather\ Search\ Col\ 3.jpeg');
@@ -37,18 +45,4 @@ body {
    
 }
 
-.yellowBtn{
-    background-color: yellow;
-}
 
-.orangeBtn{
-    background-color:orange;
-}
-
-.violetBtn{
-    background-color: violet;
-}
-
-#historylist li:hover {
-    font-weight: bold;
-}

@@ -134,7 +134,7 @@ function showForecast(forecastQueryURL){
                 
                 var forecastDate = $("<h5>").addClass("card-text").text(dateForecast);
                 
-                // https://openweathermap.org/img/wn/10d.png
+   
                 var iconImg = $("<img>").attr("src","https://openweathermap.org/img/wn/" + icon + ".png"); 
                 
                 var forecastTemp  = $("<p>").addClass("card-text").text("Temp: " +temp+ "°F");
@@ -155,16 +155,14 @@ function showForecast(forecastQueryURL){
 // ********* SetItem in local storage and GetItem to populate search history  *******
 function searchHistory(city) {
   
-    //history.push(city)
-    //console.log(history)
+    // history.push(city)
+    // console.log(history)
     // localStorage.setItem("history", JSON.stringify(history))
    
 }
 
 // *********  City search history. click to load weather ********
 
-
-// Execute script when html is fully loaded
 
 
     $(".input-group").on("submit",searchCity);
