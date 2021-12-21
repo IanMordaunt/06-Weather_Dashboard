@@ -21,5 +21,13 @@ Fetching/getting data thru API urls then navigating though the parameters to pul
 
 Finally making sure the UI is styled to please the eye help complement the funtionality.
 
+# Technology Used: HTML. CSS. JavaScript. 
 
 
+# Deployed Webpage:
+
+
+
+![Alt text]("https://github.com/IanMordaunt/06-Weather_Dashboard/blob/main/assets/%20Weather%20Dashboard%20-%20P1.png")
+
+![Alt text]("https://github.com/IanMordaunt/06-Weather_Dashboard/blob/main/assets/Weather%20Dashboard%20-%20P2.png")
