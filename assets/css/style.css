@@ -14,6 +14,10 @@ body {
    
 }
 
+.font {
+    font-weight: 800;
+}
+
 .col-3 {
     background-image: url('../Weather\ Search\ Col\ 3.jpeg');
   background-size: 100% 100%;
@@ -22,12 +26,14 @@ body {
 .headerContent {
     text-align: center;
     color:khaki;
+    background-color: lightseagreen;
 }
 
 .headerText{
     font-family: 'Lobster', cursive;
     font-size: 50px !important;
     padding: 0px;
+    justify-content: center;
    
 }
 
@@ -45,5 +51,4 @@ body {
 
 #historylist li:hover {
     font-weight: bold;
-
-
+}

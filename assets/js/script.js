@@ -1,6 +1,8 @@
 // Open-Weather-Map: API key (Global Variable)
 var apiKey = "7134337f8bd4fd3058beddffe88a0d25";
 
+// var history = [];
+
 // function to search current weather of searched city 
 function searchCity(event){
     event.preventDefault();
@@ -13,7 +15,6 @@ function searchCity(event){
    
     searchCurrentWeather(cityInput);
     
-    
     $("#searchcity").val("");
 }
 
@@ -21,7 +22,7 @@ function searchCity(event){
 function searchCurrentWeather(city){
 
     var searchQueryURL = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+ apiKey; 
-
+   searchHistory(city)
     // GET Current Weather
     $.ajax({
         url: searchQueryURL,
@@ -29,7 +30,7 @@ function searchCurrentWeather(city){
     }).then(function(response){
         
         // Log the queryURL
-        console.log("Search Query URL : "+searchQueryURL);
+        console.log(searchQueryURL);
 
         // Kelvin ---> Fahrenheit
         var tempF = (response.main.temp - 273.15) * 1.80 + 32;
@@ -76,8 +77,22 @@ function getUVIndex(uvQueryURL){
         url: uvQueryURL,
         method: "GET"
     })
-    // .then
-}
+     .then(function(uvResponse) {
+         var uvi = uvResponse.value;
+         var uvButton = $("<button>").text("UV-Index: " + uvi)
+
+         if(uvi <= 3) {
+             uvButton.addClass("btn-success")
+         }else if(uvi <= 7) {
+             uvButton.addClass("btn-warning")
+         }else {
+             uvButton.addClass("btn-danger")
+         }
+         $("#uvindex").html("")
+         $("#uvindex").append(uvButton)
+     })
+
+} 
     // **********  Need Uvi Responce   ************
     
 
@@ -114,41 +129,48 @@ function showForecast(forecastQueryURL){
                 humidity = list[i].main.humidity;
                 icon = list[i].weather[0].icon;
 
-                var card = $("<div>").addClass("card bg-primary text-white");
-                var cardBody = $("<div>").addClass("card-body");
+                var forecastCard = $("<div>").addClass("card bg-primary text-white");
+                var forecastCardBody = $("<div>").addClass("card-body");
                 
-                var fDate = $("<h5>").addClass("card-text").text(dateForecast);
+                var forecastDate = $("<h5>").addClass("card-text").text(dateForecast);
                 
                 // https://openweathermap.org/img/wn/10d.png
-                var imgIcon = $("<img>").attr("src","https://openweathermap.org/img/wn/" + icon + ".png"); 
+                var iconImg = $("<img>").attr("src","https://openweathermap.org/img/wn/" + icon + ".png"); 
                 
-                var tempP  = $("<p>").addClass("card-text").text("Temp: " +temp+ "°F");
+                var forecastTemp  = $("<p>").addClass("card-text").text("Temp: " +temp+ "°F");
                 
-                var humidityP = $("<p>").addClass("card-text").text("Humidity : " +humidity+ " % ");
+                var forecastHumidity = $("<p>").addClass("card-text").text("Humidity : " +humidity+ " % ");
 
-                cardBody.append(fDate, imgIcon, tempP, humidityP);
-                card.append(cardBody);
+                forecastCardBody.append(forecastDate, iconImg, forecastTemp, forecastHumidity);
+                forecastCard.append(forecastCardBody);
 
-                $("#forecast").append(card);
+                $("#forecast").append(forecastCard);
             }
-       
         }
     });
 }
 
-// ********* SetItem in local storage and GetItem to populate search history  *******
 
+
+// ********* SetItem in local storage and GetItem to populate search history  *******
+function searchHistory(city) {
+  
+    //history.push(city)
+    //console.log(history)
+    // localStorage.setItem("history", JSON.stringify(history))
+   
+}
 
 // *********  City search history. click to load weather ********
 
 
 // Execute script when html is fully loaded
-$(document).ready(function(){
 
-    $("#searchButton").on("click",searchCity);
+
+    $(".input-group").on("submit",searchCity);
 
     // ******  Get "history" form local storage  *****
     // ******  Add listitem class for history[i]  *****
     // ******  Append to "#historyList"  ******
     
-});
+
