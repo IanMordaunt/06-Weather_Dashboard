@@ -51,28 +51,27 @@ function searchCurrentWeather(city){
         var forecastQueryURL = "https://api.openweathermap.org/data/2.5/forecast?id="+cityId+"&units=imperial&appid="+apiKey;
           
         $("#city-card").show();
-        
+        // Addiong text content to the elements in HTML
         $("#temperature").text("Temperature : "+tempF.toFixed(2)+" °F/ "+tempC.toFixed(2)+"°C"); 
         $("#humidity").text("Humidity : "+response.main.humidity+" %");
         $("#windspeed").text("Wind Speed : "+response.wind.speed+" MPH");
         // Image icon for Current Weather (city-card)
         var imageIcon = $("<img>").attr("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon.toString() + ".png");
-
+        // adding text content to the city-name element in the HTML
         $("#city-name").text(response.name + " ("+currentDate+") ").append(imageIcon);
-
+        // calling each funtion to run the specific QueryURL
         getUVIndex(uvQueryURL); 
 
         showForecast(forecastQueryURL);
         
     });   
-
 }
 
 //  **********   Get UVI  
 function getUVIndex(uvQueryURL){
 
-    console.log("UV query URL : "+uvQueryURL);
-    
+    console.log(uvQueryURL);
+    // getting the Api set to the uvQueryURL
     $.ajax({       
         url: uvQueryURL,
         method: "GET"
@@ -80,7 +79,7 @@ function getUVIndex(uvQueryURL){
      .then(function(uvResponse) {
          var uvi = uvResponse.value;
          var uvButton = $("<button>").text("UV-Index: " + uvi)
-
+        // determining the color applied to the UV Index button 
          if(uvi <= 3) {
              uvButton.addClass("btn-success")
          }else if(uvi <= 7) {
@@ -116,15 +115,15 @@ function showForecast(forecastQueryURL){
         var list = forecastResponse.list;
 
         for(var i = 0 ; i < list.length ;i++){
-            
+            // iterating thru the array and cuturing the dates and plitting them
             var date = list[i].dt_txt.split(" ")[0];
             var dateArr = date.split("-");
-            
+            // setting the date to a new variable and puting slashes thru month/day/year
             var dateForecast = dateArr[1]+"/"+dateArr[2]+"/"+dateArr[0];
             var time = list[i].dt_txt.split(" ")[1];
 
             if(time === "12:00:00"){
-
+                // iterating thru the array and selecting the data for temp, humidity and icon
                 temp = list[i].main.temp;
                 humidity = list[i].main.humidity;
                 icon = list[i].weather[0].icon;
